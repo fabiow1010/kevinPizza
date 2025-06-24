@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kevin Pizza R.M</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body class="main-grid">
+    <header class="card-content">
+        <nav>
+            <h1 class="card-title">Kevin Pizza RM</h1>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#predidos">Pedidos</a></li>
+                <li><a href="#ofertas">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-grid">
+        <section class="destacado" id="destacado">
+            <h2>¡Bienvenido a Kevin Pizza!</h2>
+            <p>Las mejores pizzas artesanales de la ciudad.</p>
+        </section>
+
+        <section class="menu card-content" id="menu">
+            <h2>Nuestro Menú</h2>
+            <ul id="lista-productos">
+                <!-- Los productos se insertarán aquí por JS -->
+            </ul>
+            <div class="ofertas" id="pedidos">
+                <div id="toast" class="toast hidden"></div>
+                <h2>Carrito de Pedidos</h3>
+                <h3>¿Cómo hacer un pedido?</h3>
+                <p>Selecciona tus productos y haz clic en "Añadir al carrito". Luego, ve a la sección de pedidos para
+                    completar tu compra.</p>
+                <input type="text" id="direccion" placeholder="Direccion del pedido" required>
+                <button onclick="enviarPedido()"
+                    style="margin-top:2rem; background:#ffd600; color:#b71c1c; font-weight:bold; border:none; border-radius:8px; padding:1em 2em; cursor:pointer;">
+                    Enviar pedido por WhatsApp
+                </button>
+                <button onclick="limpiarCarrito()"
+                    style="margin-top:2rem; background:#b71c1c; color:#ffd600; font-weight:bold; border:none; border-radius:8px; padding:1em 2em; cursor:pointer;">
+                    Limpiar Carrito de Pedidos
+            </div>
+        </section>
+
+        <aside class="ofertas" id="ofertas">
+            <h2>Ofertas Especiales</h2>
+            <p>Contactanos via tel: <a type="link" href="https://wa.me/+573142008771">+57 3142008771</a>.</p>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Kevin Pizza. Todos los derechos reservados.@Fabian Fernandez</p>
+    </footer>
+
+    <script src="/scripts/script.js"></script>
+</body>
+
+</html>
