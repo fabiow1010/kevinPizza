@@ -32,23 +32,47 @@
 
         <section class="menu card-content" id="menu">
             <h2>Nuestro Menú</h2>
-            <ul id="lista-productos">
-                <!-- Los productos se insertarán aquí por JS -->
+            <ul class="menu" id="menu-lista">
+                <li>
+                    <div class="categoria-header" onclick="toggleCategoria('lista-pizza', this)">
+                        Pizzas <span class="arrow">&#9654;</span>
+                    </div>
+                    <ul class="productos" id="lista-pizza">
+                        <!-- Productos pizza por JS -->
+                    </ul>
+                </li>
+                <li>
+                    <div class="categoria-header" onclick="toggleCategoria('lista-hamburguesa', this)">
+                        Hamburguesas <span class="arrow">&#9654;</span>
+                    </div>
+                    <ul class="productos" id="lista-hamburguesa">
+                        <!-- Productos hamburguesa por JS -->
+                    </ul>
+                </li>
+                <li>
+                    <div class="categoria-header" onclick="toggleCategoria('lista-demas', this)">
+                        Especiales <span class="arrow">&#9654;</span>
+                    </div>
+                    <ul class="productos" id="lista-demas">
+                        <!-- Otros productos por JS -->
+                    </ul>
+                </li>
             </ul>
             <div class="ofertas" id="pedidos">
                 <div id="toast" class="toast hidden"></div>
                 <h2>Carrito de Pedidos</h3>
-                <h3>¿Cómo hacer un pedido?</h3>
-                <p>Selecciona tus productos y haz clic en "Añadir al carrito". Luego, ve a la sección de pedidos para
-                    completar tu compra.</p>
-                <input type="text" id="direccion" placeholder="Direccion del pedido" required>
-                <button onclick="enviarPedido()"
-                    style="margin-top:2rem; background:#ffd600; color:#b71c1c; font-weight:bold; border:none; border-radius:8px; padding:1em 2em; cursor:pointer;">
-                    Enviar pedido por WhatsApp
-                </button>
-                <button onclick="limpiarCarrito()"
-                    style="margin-top:2rem; background:#b71c1c; color:#ffd600; font-weight:bold; border:none; border-radius:8px; padding:1em 2em; cursor:pointer;">
-                    Limpiar Carrito de Pedidos
+                    <h3>¿Cómo hacer un pedido?</h3>
+                    <p>Selecciona tus productos y haz clic en "Añadir al carrito". Luego, ve a la sección de pedidos
+                        para
+                        completar tu compra.</p>
+                    <input type="text" id="direccion" placeholder="Direccion del pedido" required>
+                    <button onclick="enviarPedido()"
+                        style="margin-top:2rem; background:#ffd600; color:#b71c1c; font-weight:bold; border:none; border-radius:8px; padding:1em 2em; cursor:pointer;">
+                        Enviar pedido por WhatsApp
+                    </button>
+                    <button onclick="limpiarCarrito()"
+                        style="margin-top:2rem; background:#b71c1c; color:#ffd600; font-weight:bold; border:none; border-radius:8px; padding:1em 2em; cursor:pointer;">
+                        Limpiar Carrito de Pedidos
             </div>
         </section>
 

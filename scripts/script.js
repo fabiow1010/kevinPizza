@@ -1,31 +1,39 @@
 fetch('productos.json')  // Asegúrate de que la ruta sea correcta
-    .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.json();
-    })
-    .then(productos => {
-        const ul = document.getElementById('lista-productos');
-        ul.innerHTML = '';
-        productos.forEach(producto => {
-            const li = document.createElement('li');
-            li.className = 'card';
-            li.innerHTML = `
-                <h4>
-                    <img src="${producto.imagen}" alt="${producto.nombre}" style="width:100px;">
-                    ${producto.nombre}
-                </h4>
-                <p class="card-desc">${producto.descripcion}</p>
-                <span>Precio: $${producto.precio}</span>
-                <button onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio})">Agregar</button>
-            `;
-            ul.appendChild(li);
-        });
-    })
-    .catch(error => {
-        console.error('Error fetching products:', error);
-        const ul = document.getElementById('lista-productos');
-        ul.innerHTML = '<li>Error al cargar los productos.</li>';
+  .then(response => {
+    if (!response.ok) throw new Error('Network response was not ok');
+    return response.json();
+  })
+  .then(productos => {
+    // Limpia las listas
+    document.getElementById('lista-pizza').innerHTML = '';
+    document.getElementById('lista-hamburguesa').innerHTML = '';
+    document.getElementById('lista-demas').innerHTML = '';
+    productos.forEach(producto => {
+      const li = document.createElement('li');
+      li.className = 'card';
+      li.innerHTML = `
+                  <h4>
+                      <img src="${producto.imagen}" alt="${producto.nombre}" style="width:100px;">
+                      ${producto.nombre}
+                  </h4>
+                  <p class="card-desc">${producto.descripcion}</p>
+                  <span>Precio: $${producto.precio}</span>
+                  <button onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio})">Agregar</button>
+              `;
+      // Asigna según tipo
+      if (producto.clase === 'pizza') {
+        document.getElementById('lista-pizza').appendChild(li);
+      } else if (producto.clase === 'hamburguesa') {
+        document.getElementById('lista-hamburguesa').appendChild(li);
+      } else {
+        document.getElementById('lista-demas').appendChild(li);
+      }
     });
+  })
+  .catch(error => {
+    console.error('Error fetching products:', error);
+    document.getElementById('lista-pizza').innerHTML = '<li>Error al cargar los productos.</li>';
+  });
 
 let carrito = [];
 
@@ -67,7 +75,7 @@ function enviarPedido() {
   });
 
   mensaje += `\nTotal: $${total.toFixed(2)}`;
-  const numero = "573142008771"; 
+  const numero = "573142008771";
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
 
   window.open(url, "_blank");
@@ -76,4 +84,16 @@ function enviarPedido() {
 function limpiarCarrito() {
   carrito = [];
   mostrarToast("Carrito limpiado");
+}
+
+function toggleCategoria(listaId, headerElem) {
+  const lista = document.getElementById(listaId);
+  const allLists = document.querySelectorAll('ul.productos');
+  const allHeaders = document.querySelectorAll('.categoria-header');
+  // Cierra todas las listas menos la seleccionada
+  allLists.forEach(l => { if (l !== lista) l.classList.remove('open'); });
+  allHeaders.forEach(h => { if (h !== headerElem) h.classList.remove('active'); });
+  // Toggle la seleccionada
+  lista.classList.toggle('open');
+  headerElem.classList.toggle('active');
 }

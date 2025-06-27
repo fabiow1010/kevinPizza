@@ -1,38 +1,59 @@
 [
     {
+        "clase" : "pizza",
         "nombre": "Pizza Margarita",
         "descripcion": "Con tomate, mozzarella y albahaca. Ideal para los amantes de la pizza clásica, 8 porciones.",
         "precio": 40000,
         "imagen": "img/pizza.svg"
     },
     {
+        "clase" : "pizza",
         "nombre": "Pizza Pepperoni",
         "descripcion": "Con pepperoni y extra queso. Perfecta para los que disfrutan de un toque picante, 8 porciones.",
         "precio": 40000,
         "imagen": "img/pizza.svg"
     },
     {
+        "clase" : "pizza",
         "nombre": "Pizza Vegetariana",
         "descripcion": "Con pimientos, champiñones y cebolla. Ideal para los amantes de las verduras, 8 porciones.",
         "precio": 40000,
         "imagen": "img/pizza.svg"
     },
     {
+        "clase" : "pizza",
         "nombre": "Pizza BBQ",
         "descripcion": "Con pollo, cebolla y salsa BBQ. Perfecta para los que disfrutan de un sabor ahumado, 8 porciones.",
         "precio": 40000,
         "imagen": "img/pizza.svg"
     },
     {
+        "clase" : "pizza",
         "nombre": "Pizza Cuatro Quesos",
         "descripcion": "Con mozzarella, cheddar, azul y parmesano. Ideal para los amantes del queso, 8 porciones.",
         "precio": 40000,
         "imagen": "img/pizza.svg"
     },
     {
+        "clase" : "pizza",
         "nombre": "Pizza Hawaiana",
         "descripcion": "Con jamón y piña. Perfecta para los que disfrutan de la combinación dulce y salado, 8 porciones.",
         "precio": 40000,
         "imagen": "img/pizza.svg"
+    },
+    {
+        "clase" : "hamburguesa",
+        "nombre": "Hamburguesa Carbonara",
+        "descripcion": "Con tocino, huevo y queso. Ideal para los amantes de la pasta en pizza, 8 porciones.",
+        "precio": 40000,
+        "imagen": "img/pizza.svg"
+    },
+    {
+        "clase" : "hamburguesa",
+        "nombre": "Hamburguesa BBQ",  
+        "descripcion": "Con pollo, cebolla y salsa BBQ. Perfecta para los que disfrutan de un sabor ahumado, 8 porciones.",
+        "precio": 40000,
+        "imagen": "img/pizza.svg"  
     }
+
 ]
