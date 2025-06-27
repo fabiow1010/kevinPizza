@@ -423,3 +423,50 @@ input[type="text"]:focus {
     transform: translateY(20px);
     opacity: 0;
 }
+
+/* Ajuste de tarjetas de producto para versión web */
+@media (min-width: 901px) {
+    ul.productos.open {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    .card {
+        min-width: 0;
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto;
+        padding: 1.5em 1em;
+        font-size: 1em;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .card img {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 0.5em;
+        margin-right: 0;
+        display: block;
+    }
+    .card h4 {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        font-size: 1.15em;
+        margin-bottom: 0.5em;
+        width: 100%;
+    }
+    .card-content {
+        padding: 1rem 0.5rem;
+    }
+}
+
+/* Corrige el grid de productos para que no afecte otras listas */
+ul.menu {
+    display: block;
+    grid-template-columns: none;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+}
