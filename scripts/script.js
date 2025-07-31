@@ -1,38 +1,47 @@
-fetch('productos.json')  // Asegúrate de que la ruta sea correcta
+fetch('productos.json')
   .then(response => {
-    if (!response.ok) throw new Error('Network response was not ok');
+    if (!response.ok) throw new Error('Error al cargar los productos.');
     return response.json();
   })
   .then(productos => {
-    // Limpia las listas
-    document.getElementById('lista-pizza').innerHTML = '';
-    document.getElementById('lista-hamburguesa').innerHTML = '';
-    document.getElementById('lista-demas').innerHTML = '';
+    const pizzaList = document.getElementById('lista-pizza');
+    const hamburguesaList = document.getElementById('lista-hamburguesa');
+    const demasList = document.getElementById('lista-demas');
+
+    pizzaList.innerHTML = '';
+    hamburguesaList.innerHTML = '';
+    demasList.innerHTML = '';
+
     productos.forEach(producto => {
       const li = document.createElement('li');
-      li.className = 'card';
+      li.className = 'card shadow-hover';
+
       li.innerHTML = `
-                  <h4>
-                      <img src="${producto.imagen}" alt="${producto.nombre}" style="width:100px;">
-                      ${producto.nombre}
-                  </h4>
-                  <p class="card-desc">${producto.descripcion}</p>
-                  <span>Precio: $${producto.precio}</span>
-                  <button onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio})">Agregar</button>
-              `;
-      // Asigna según tipo
+        <div class="card-content">
+          <h4 class="card-title">
+            <img src="${producto.imagen}" alt="${producto.nombre}" class="card-img">
+            ${producto.nombre}
+          </h4>
+          <p class="card-desc">${producto.descripcion}</p>
+          <span class="card-price">Precio: $${producto.precio}</span>
+          <button onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio})">
+            Agregar al carrito
+          </button>
+        </div>
+      `;
+
       if (producto.clase === 'pizza') {
-        document.getElementById('lista-pizza').appendChild(li);
+        pizzaList.appendChild(li);
       } else if (producto.clase === 'hamburguesa') {
-        document.getElementById('lista-hamburguesa').appendChild(li);
+        hamburguesaList.appendChild(li);
       } else {
-        document.getElementById('lista-demas').appendChild(li);
+        demasList.appendChild(li);
       }
     });
   })
   .catch(error => {
-    console.error('Error fetching products:', error);
-    document.getElementById('lista-pizza').innerHTML = '<li>Error al cargar los productos.</li>';
+    console.error('Error:', error);
+    document.getElementById('lista-pizza').innerHTML = '<li class="card">No se pudieron cargar los productos.</li>';
   });
 
 let carrito = [];
@@ -46,35 +55,56 @@ function mostrarToast(mensaje) {
   setTimeout(() => {
     toast.classList.remove('show');
     toast.classList.add('hidden');
-  }, 3000); // se oculta a los 3 segundos
+  }, 3000);
+}
+
+function renderCarrito() {
+  const ul = document.getElementById('carrito-lista');
+  if (!ul) return;
+  ul.innerHTML = '';
+  if (carrito.length === 0) {
+    ul.innerHTML = '<li class="carrito-vacio">El carrito está vacío.</li>';
+    return;
+  }
+  let total = 0;
+  carrito.forEach(item => {
+    total += item.precio;
+    ul.innerHTML += `<li>${item.nombre} <span>$${item.precio}</span></li>`;
+  });
+  ul.innerHTML += `<li style="font-weight:bold; border-bottom:none;">Total: <span>$${total.toFixed(2)}</span></li>`;
 }
 
 function agregarAlCarrito(nombre, precio) {
   carrito.push({ nombre, precio });
-  mostrarToast(`${nombre} agregada al carrito`);
+  mostrarToast(`${nombre} agregado al carrito`);
+  renderCarrito();
 }
 
 function enviarPedido() {
   if (carrito.length === 0) {
-    mostrarToast("El carrito está vacío");
+    mostrarToast("El carrito está vacío.");
     return;
   }
 
-  let total = 0;
   const direccionInput = document.getElementById("direccion");
-  let direccion = direccionInput ? direccionInput.value.trim() : "";
+  const direccion = direccionInput?.value.trim();
+
   if (!direccion) {
     mostrarToast("Por favor ingresa la dirección de entrega.");
-    if (direccionInput) direccionInput.focus();
+    direccionInput?.focus();
     return;
   }
-  let mensaje = "Hola, me gustaría pedir:\n" + `Dirección: ${direccion}\n\n`;
-  carrito.forEach((item) => {
+
+  let mensaje = `Hola, me gustaría pedir:\nDirección: ${direccion}\n\n`;
+  let total = 0;
+
+  carrito.forEach(item => {
     mensaje += `• ${item.nombre} - $${item.precio}\n`;
     total += item.precio;
   });
 
   mensaje += `\nTotal: $${total.toFixed(2)}`;
+
   const numero = "573142008771";
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
 
@@ -83,17 +113,31 @@ function enviarPedido() {
 
 function limpiarCarrito() {
   carrito = [];
-  mostrarToast("Carrito limpiado");
+  mostrarToast("Carrito limpiado.");
+  renderCarrito();
 }
 
 function toggleCategoria(listaId, headerElem) {
   const lista = document.getElementById(listaId);
   const allLists = document.querySelectorAll('ul.productos');
   const allHeaders = document.querySelectorAll('.categoria-header');
-  // Cierra todas las listas menos la seleccionada
-  allLists.forEach(l => { if (l !== lista) l.classList.remove('open'); });
-  allHeaders.forEach(h => { if (h !== headerElem) h.classList.remove('active'); });
-  // Toggle la seleccionada
+
+  allLists.forEach(l => {
+    if (l !== lista) l.classList.remove('open');
+  });
+
+  allHeaders.forEach(h => {
+    if (h !== headerElem) h.classList.remove('active');
+  });
+
   lista.classList.toggle('open');
   headerElem.classList.toggle('active');
 }
+
+function toggleNavbar() {
+  const menu = document.getElementById('navbar-menu');
+  menu.classList.toggle('hidden');
+}
+
+// Llama a renderCarrito al cargar la página para mostrar el estado inicial
+document.addEventListener('DOMContentLoaded', renderCarrito);

@@ -13,9 +13,14 @@
 
 <body class="main-grid">
     <header class="card-content">
-        <nav>
+        <nav class="navbar">
+            <div class="navbar-toggle" onclick="toggleNavbar()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
             <h1 class="card-title">Kevin Pizza RM</h1>
-            <ul>
+            <ul id="navbar-menu" class="navbar-menu hidden">
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#menu">Menú</a></li>
                 <li><a href="#predidos">Pedidos</a></li>
@@ -60,19 +65,22 @@
             </ul>
             <div class="ofertas" id="pedidos">
                 <div id="toast" class="toast hidden"></div>
-                <h2>Carrito de Pedidos</h3>
-                    <h3>¿Cómo hacer un pedido?</h3>
-                    <p>Selecciona tus productos y haz clic en "Añadir al carrito". Luego, ve a la sección de pedidos
-                        para
-                        completar tu compra.</p>
-                    <input type="text" id="direccion" placeholder="Direccion del pedido" required>
-                    <button onclick="enviarPedido()"
-                        style="margin-top:2rem; background:#ffd600; color:#b71c1c; font-weight:bold; border:none; border-radius:8px; padding:1em 2em; cursor:pointer;">
-                        Enviar pedido por WhatsApp
-                    </button>
-                    <button onclick="limpiarCarrito()"
-                        style="margin-top:2rem; background:#b71c1c; color:#ffd600; font-weight:bold; border:none; border-radius:8px; padding:1em 2em; cursor:pointer;">
-                        Limpiar Carrito de Pedidos
+                <h2>Carrito de Pedidos</h2>
+                <!-- Nueva sección para mostrar productos del carrito -->
+                <ul id="carrito-lista" class="carrito-lista"></ul>
+                <h3>¿Cómo hacer un pedido?</h3>
+                <p>Selecciona tus productos y haz clic en "Añadir al carrito". Luego, ve a la sección de pedidos
+                    para
+                    completar tu compra.</p>
+                <input type="text" id="direccion" placeholder="Direccion del pedido" required>
+                <button onclick="enviarPedido()"
+                    style="margin-top:2rem; background:#ffd600; color:#b71c1c; font-weight:bold; border:none; border-radius:8px; padding:1em 2em; cursor:pointer;">
+                    Enviar pedido por WhatsApp
+                </button>
+                <button onclick="limpiarCarrito()"
+                    style="margin-top:2rem; background:#b71c1c; color:#ffd600; font-weight:bold; border:none; border-radius:8px; padding:1em 2em; cursor:pointer;">
+                    Limpiar Carrito de Pedidos
+                </button>
             </div>
         </section>
 
