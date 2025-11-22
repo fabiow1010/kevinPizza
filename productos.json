@@ -110,6 +110,41 @@
         "descripcion": "Con Carne de la mas alta calidad, Queso, Jamon, Lechuga y Tomate, y con un especial de pollo con chapiñones a la parrilla. Ideal para los amantes de una hamburguesa tradicional",
         "precio": 40000,
         "imagen": "img/hamburguesa.jpeg"  
+    },
+    {
+        "clase" : "especiales",
+        "nombre": "Salvajada",  
+        "descripcion": "Con Carne de la mas alta calidad, Queso, Jamon, Lechuga y Tomate, y con un especial de pollo con chapiñones a la parrilla. Ideal para los amantes de una hamburguesa tradicional",
+        "precio": 40000,
+        "imagen": "img/hamburguesa.jpeg"  
+    },
+    {
+        "clase" : "especiales",
+        "nombre": "Salvajada Mixta",  
+        "descripcion": "Con Carne de la mas alta calidad, Queso, Jamon, Lechuga y Tomate, y con un especial de pollo con chapiñones a la parrilla. Ideal para los amantes de una hamburguesa tradicional",
+        "precio": 40000,
+        "imagen": "img/hamburguesa.jpeg"  
+    },
+    {
+        "clase" : "especiales",
+        "nombre": "Salchichapapa",  
+        "descripcion": "Con Carne de la mas alta calidad, Queso, Jamon, Lechuga y Tomate, y con un especial de pollo con chapiñones a la parrilla. Ideal para los amantes de una hamburguesa tradicional",
+        "precio": 40000,
+        "imagen": "img/hamburguesa.jpeg"  
+    },
+    {
+        "clase" : "especiales",
+        "nombre": "Choripapa",  
+        "descripcion": "Con Carne de la mas alta calidad, Queso, Jamon, Lechuga y Tomate, y con un especial de pollo con chapiñones a la parrilla. Ideal para los amantes de una hamburguesa tradicional",
+        "precio": 40000,
+        "imagen": "img/hamburguesa.jpeg"  
+    },
+    {
+        "clase" : "especiales",
+        "nombre": "Mazorcada",  
+        "descripcion": "Con Carne de la mas alta calidad, Queso, Jamon, Lechuga y Tomate, y con un especial de pollo con chapiñones a la parrilla. Ideal para los amantes de una hamburguesa tradicional",
+        "precio": 40000,
+        "imagen": "img/hamburguesa.jpeg"  
     }
 
 ]

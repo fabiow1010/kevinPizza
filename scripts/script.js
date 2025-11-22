@@ -7,10 +7,13 @@ fetch('productos.json')
     const pizzaList = document.getElementById('lista-pizza');
     const hamburguesaList = document.getElementById('lista-hamburguesa');
     const demasList = document.getElementById('lista-demas');
+    // tolerancia: busca ambos posibles ids (corrección de typo)
+    const hotdogList = document.getElementById('lista-hotdog') || document.getElementById('lista-hostdog');
 
     pizzaList.innerHTML = '';
     hamburguesaList.innerHTML = '';
     demasList.innerHTML = '';
+    if (hotdogList) hotdogList.innerHTML = '';
 
     productos.forEach(producto => {
       const li = document.createElement('li');
@@ -34,6 +37,13 @@ fetch('productos.json')
         pizzaList.appendChild(li);
       } else if (producto.clase === 'hamburguesa') {
         hamburguesaList.appendChild(li);
+      } else if (producto.clase === 'hotdog') {
+        // nueva categoría hotdog
+        if (hotdogList) {
+          hotdogList.appendChild(li);
+        } else {
+          demasList.appendChild(li); // fallback si no existe la lista-hotdog
+        }
       } else {
         demasList.appendChild(li);
       }
@@ -42,6 +52,9 @@ fetch('productos.json')
   .catch(error => {
     console.error('Error:', error);
     document.getElementById('lista-pizza').innerHTML = '<li class="card">No se pudieron cargar los productos.</li>';
+    // tolerancia en el catch también
+    const h = document.getElementById('lista-hotdog') || document.getElementById('lista-hostdog');
+    if (h) h.innerHTML = '<li class="card">No se pudieron cargar los productos.</li>';
   });
 
 let carrito = [];
