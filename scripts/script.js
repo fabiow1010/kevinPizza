@@ -95,7 +95,7 @@ function enviarPedido() {
     return;
   }
 
-  let mensaje = `Hola, me gustaría pedir:\nDirección: ${direccion}\n\n`;
+  let mensaje = `Hola, me gustaría pedir:\nPara esta Dirección: ${direccion}\n\n`;
   let total = 0;
 
   carrito.forEach(item => {
@@ -105,7 +105,7 @@ function enviarPedido() {
 
   mensaje += `\nTotal: $${total.toFixed(2)}`;
 
-  const numero = "573142008771";
+  const numero = "573115594224";
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
 
   window.open(url, "_blank");
